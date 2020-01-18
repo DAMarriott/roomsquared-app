@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 
-class AboutPage extends Component {
+export default class AboutPage extends Component {
   render() {
     return (
-      <main role="main">
+      <div>
         <section className="aboutSection">
           <h1>Roomsquared</h1>
           <h2>Keep track of shared household expenses.</h2>
@@ -12,14 +12,14 @@ class AboutPage extends Component {
             purchased for you and your roommates.
           </p>
           <div className="button-group">
-            <a href="">Demo</a>
+            <a href="#features">Demo</a>
             <a href="#features">Features</a>
           </div>
         </section>
         <section className="aboutSection" id="features">
           <h3>Make your group</h3>
           <div className="about-img-container">
-            <img src="/images/5893.png"></img>
+            <img src="/images/5893.png" alt="handshake"></img>
           </div>
           <p>One person makes a group and everyone else will join.</p>
         </section>
@@ -38,9 +38,7 @@ class AboutPage extends Component {
             you need to Venmo to square up the house tab.
           </p>
         </section>
-      </main>
+      </div>
     );
   }
 }
-
-export default AboutPage;

@@ -1,90 +1,50 @@
 import React, { Component } from "react";
-import ValidationError from "../ValidationError.js";
-import { signup } from "../services/auth";
+import AuthApiService from "../services/auth";
 
 class SignupForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      password: "",
-      repeatPassword: ""
-    };
-  }
+  static defaultProps = {
+    onRegistrationSuccess: () => {}
+  };
 
-  updateName(name) {
-    this.setState({ name: { value: name, touched: true } });
-  }
+  state = { error: null };
 
-  updatePassword(password) {
-    this.setState({
-      password: { value: password, touched: true }
-    });
-  }
+  handleSubmit = ev => {
+    ev.preventDefault();
+    const { username, password, groupId } = ev.target;
 
-  updateRepeatPassword(repeatPassword) {
-    this.setState({
-      repeatPassword: {
-        value: repeatPassword,
-        touched: true
-      }
-    });
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    const { name, password, repeatPassword } = this.state;
-    signup(name, password, repeatPassword).then(res => console.log(res));
-  }
-
-  validateName() {
-    const name = this.state.name.trim();
-    if (name.length === 0) {
-      return "Name is required";
-    } else if (name.length < 3) {
-      return "Name must be at least 3 characters long";
-    }
-  }
-
-  validatePassword() {
-    const password = this.state.password.trim();
-    if (password.length === 0) {
-      return "Password is required";
-    } else if (password.length < 6 || password.length > 72) {
-      return "Password must be between 6 and 72 characters long";
-    } else if (!password.match(/[0-9]/)) {
-      return "Password must contain at least one number";
-    }
-  }
-
-  validateRepeatPassword() {
-    const repeatPassword = this.state.repeatPassword.trim();
-    const password = this.state.password.trim();
-
-    if (repeatPassword !== password) {
-      return "Passwords do not match";
-    }
-  }
+    this.setState({ error: null });
+    AuthApiService.postUser({
+      username: username.value,
+      password: password.value,
+      groupId: groupId.value
+    })
+      .then(user => {
+        username.value = " ";
+        password.value = " ";
+        groupId.calue = " ";
+        this.props.onRegistrationSuccess();
+      })
+      .catch(res => {
+        this.setState({ error: res.error });
+      });
+  };
 
   render() {
-    const nameError = this.validateName();
-    const passwordError = this.validatePassword();
-    const repeatPasswordError = this.validateRepeatPassword();
+    const { error } = this.state;
 
     return (
-      <form className="registration" onSubmit={e => this.handleSubmit(e)}>
+      <form className="registration" onSubmit={this.handleSubmit}>
         <h2>Register</h2>
+        <div role="alert">{error && <p className="red">{error}</p>}</div>
         <div className="registration__hint"></div>
         <div className="form-group">
-          <label htmlFor="name">Username</label>
+          <label htmlFor="username">Username</label>
           <input
             type="text"
             className="registration__control"
-            name="name"
-            id="name"
-            onChange={e => this.updateName(e.target.value)}
+            name="username"
+            id="username"
           />
-          {this.state.name.touched && <ValidationError message={nameError} />}
         </div>
         <div className="form-group">
           <label htmlFor="password">Password</label>
@@ -93,39 +53,23 @@ class SignupForm extends React.Component {
             className="registration__control"
             name="password"
             id="password"
-            onChange={e => this.updatePassword(e.target.value)}
           />
-          {this.state.password.touched && (
-            <ValidationError message={passwordError} />
-          )}
         </div>
         <div className="form-group">
-          <label htmlFor="repeatPassword">Repeat Password</label>
+          <label htmlFor="groupId">Group ID</label>
           <input
-            type="password"
+            type="groupId"
             className="registration__control"
-            name="repeatPassword"
-            id="repeatPassword"
-            onChange={e => this.updateRepeatPassword(e.target.value)}
+            name="groupId"
+            id="groupId"
           />
-          {this.state.repeatPassword.touched && (
-            <ValidationError message={repeatPasswordError} />
-          )}
         </div>
 
         <div className="registration__button__group">
           <button type="reset" className="registration__button">
             Cancel
           </button>
-          <button
-            type="submit"
-            className="registration__button"
-            disabled={
-              this.validateName() ||
-              this.validatePassword() ||
-              this.validateRepeatPassword()
-            }
-          >
+          <button type="submit" className="registration__button">
             Submit
           </button>
         </div>

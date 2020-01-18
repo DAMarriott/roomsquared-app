@@ -1,56 +1,43 @@
 import React, { Component } from "react";
-import { login } from "../services/auth";
+import AuthApiService from "../services/auth";
 
-class SigninForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      password: ""
-    };
-  }
+export default class SigninForm extends React.Component {
+  static defaultProps = {
+    onSigninSuccess: () => {}
+  };
 
-  updateName(name) {
-    this.setState({ name: { value: name, touched: true } });
-  }
+  state = { error: null };
 
-  updatePassword(password) {
-    this.setState({
-      password: { value: password, touched: true }
-    });
-  }
+  handleSubmitBasicAuth = ev => {
+    ev.preventDefault();
+    const { username, password } = ev.target;
 
-  handleSubmit(event) {
-    event.preventDefault();
-    const { name, password } = this.state;
-    login(name, password).then(res => console.log(res));
-  }
-
-  validateName() {
-    const name = this.state.name.trim();
-    if (name.length === 0) {
-      return "Name is required";
-    } else if (name.length < 3) {
-      return "Name must be at least 3 characters long";
-    }
-  }
-
-  validatePassword() {
-    const password = this.state.password.trim();
-    if (password.length === 0) {
-      return "Password is required";
-    } else if (password.length < 6 || password.length > 72) {
-      return "Password must be between 6 and 72 characters long";
-    }
-  }
+    this.setState({ error: null });
+    AuthApiService.postLogin({
+      username: username.value,
+      password: password.value
+    })
+      .then(user => {
+        username.value = " ";
+        password.value = " ";
+        this.props.onSigninSuccess();
+        console.log(user);
+      })
+      .catch(res => {
+        this.setState({ error: res.error });
+      });
+  };
 
   render() {
-    const nameError = this.validateName();
-    const passwordError = this.validatePassword();
+    const { error } = this.state;
 
     return (
-      <form className="registration" onSubmit={e => this.handleSubmit(e)}>
+      <form
+        className="registration"
+        onSubmit={e => this.handleSubmitBasicAuth(e)}
+      >
         <h2>Sign In</h2>
+        <div role="alert">{error && <p className="red">{error}</p>}</div>
         <div className="form-group">
           <label htmlFor="username">Username</label>
           <input
@@ -58,7 +45,7 @@ class SigninForm extends React.Component {
             className="registration__control"
             name="username"
             id="username"
-            onChange={e => this.setState({ name: e.target.value })}
+            defaultValue="dm"
           />
         </div>
         <div className="form-group">
@@ -68,7 +55,7 @@ class SigninForm extends React.Component {
             className="registration__control"
             name="password"
             id="password"
-            onChange={e => this.setState({ password: e.target.value })}
+            defaultValue="12345678"
           />
         </div>
         <div className="login__button__group">
@@ -80,5 +67,3 @@ class SigninForm extends React.Component {
     );
   }
 }
-
-export default SigninForm;

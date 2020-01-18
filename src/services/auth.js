@@ -1,16 +1,37 @@
-async function login(username, password) {
-  console.log("Name: ", username);
-  console.log("Password: ", password);
-  const res = await fetch("/api/signin");
-  return res;
-}
+import config from "./config";
+const { saveAuthToken } = require("./token-service");
+const tokenService = require("./token-service");
 
-async function signup(username, password, repeatpassword) {
-  console.log("Name: ", username);
-  console.log("Password: ", password);
-  console.log("Repeat Password: ", repeatpassword);
-  const res = await fetch("/api/signup");
-  return res;
-}
+console.log(tokenService);
 
-export { login, signup };
+const AuthApiService = {
+  postLogin({ username, password }) {
+    return fetch(`${config.API_ENDPOINT}/auth/signin`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({ username, password })
+    })
+      .then(res =>
+        !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+      )
+      .then(res => {
+        saveAuthToken(res["authToken"]);
+        return res;
+      });
+  },
+  postUser(user) {
+    return fetch(`${config.API_ENDPOINT}/users`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(user)
+    }).then(res =>
+      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+    );
+  }
+};
+
+export default AuthApiService;

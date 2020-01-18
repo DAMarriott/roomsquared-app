@@ -40,5 +40,17 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      $(function() {
+        $(window).scroll(function() {
+          var winTop = $(window).scrollTop();
+          if (winTop >= 30) {
+            $("body").addClass("sticky-header");
+          } else {
+            $("body").removeClass("sticky-header");
+          } //if-else
+        }); //win func.
+      }); //ready func.
+    </script>
   </body>
 </html>
