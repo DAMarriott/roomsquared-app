@@ -7,9 +7,21 @@ import SignupPage from "./routes/SignupPage";
 import PurchasesPage from "./routes/PurchasesPage";
 import NotFoundPage from "./routes/NotFoundPage";
 import "./App.css";
+import "./layout.scss";
 
 class App extends Component {
-  state = { hasError: false };
+  state = { hasError: false, sticky: false };
+
+  componentDidMount() {
+    window.addEventListener("scroll", () => {
+      var winTop = window.scrollY;
+      if (winTop >= 30) {
+        this.setState({ sticky: true });
+      } else {
+        this.setState({ sticky: false });
+      }
+    });
+  }
 
   static getDerivedStateFromError(error) {
     console.error(error);
@@ -17,8 +29,9 @@ class App extends Component {
   }
 
   render() {
+    const { sticky } = this.state;
     return (
-      <div className="App">
+      <div className={["App", sticky ? "sticky-header" : ""].join(" ")}>
         <Header />
         <main className="App__main">
           <Switch>

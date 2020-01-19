@@ -73,6 +73,7 @@ class SignupForm extends React.Component {
             Submit
           </button>
         </div>
+        <a className="registration__button__new">New Group</a>
       </form>
     );
   }

@@ -16,7 +16,7 @@ export default class SigninPage extends Component {
   render() {
     return (
       <section className="SigninPage">
-        <h2>Sign in</h2>
+        <p>Welcome back.</p>
         <SigninForm onSigninSuccess={this.handleSigninSuccess} />
       </section>
     );

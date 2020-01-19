@@ -1,45 +1,39 @@
 /* ------------------------------------------------------------------ */
 /* a. General Styles
 /* ------------------------------------------------------------------ */
-@import "compass/css3";
-
-@import "compass/css3";
-@import "compass/reset";
-* {
-  @include box-sizing(border-box);
-}
 
 html {
   overflow-x: hidden;
 }
 
 body {
-  background: #0f0f0f;
+  background: rgb(21, 32, 43);
   color: #fff;
   margin-top: 100px;
-  padding-top: 140px;
-  @include transition(padding-top 0.5s ease);
+  font-size: 16px;
+  padding-top: 80px;
+  transition: padding-top 0.5s ease;
 }
 
 header {
   width: 100%;
-  height: 120px;
+  height: 200px;
   background-color: #3498db;
   text-align: center;
   position: relative;
   position: fixed;
   top: 0;
   overflow: hidden;
-  @include transition(all 0.5s ease);
+  transition: all 0.5s ease;
 }
 
 header h1 {
   font-size: 42px;
   color: #fff;
-  line-height: 230px;
+  line-height: 80px;
   text-transform: uppercase;
   font-weight: 100;
-  @include transition(all 0.3s ease);
+  transition: all 0.3s ease;
 }
 
 header nav {
@@ -55,29 +49,26 @@ header nav a {
   color: #fff;
   display: inline-block;
   padding: 10px 15px;
-  line-height: 1;
   text-decoration: none;
-  @include border-radius(2px);
+  border-radius: 2px;
+  font: 0.9rem "opensans-bold", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 header nav a:hover {
-  @include box-shadow(0 0 0 1px #fff);
+  box-shadow: 0 0 0 1px #fff;
 }
 
-body.sticky-header {
-  padding-top: 100px;
-}
-
-body.sticker-header header {
+.sticky-header header {
   height: 60px;
   background-color: rgba(52, 152, 219, 0.9);
 }
-body.sticker-header header h1 {
-  @include scale(0);
+.sticky-header header h1 {
+  transform: scale(0);
 }
 
 main {
-  margin-top: 150px;
   padding: 10%;
   font-family: monospace;
   font-size: 1.3rem;
@@ -108,22 +99,10 @@ main .aboutSection * {
 }
 
 #features {
-  margin-top: 30rem;
-}
-
-.App {
-  margin-top: 150px;
-}
-
-.nav {
-  padding-inline-start: 0;
+  margin-top: 3rem;
 }
 
 /* group page view */
-
-.main-home {
-  padding-top: 0%;
-}
 
 .purchase-box {
   height: 25rem;
@@ -153,26 +132,11 @@ img {
   font-family: monospace;
 }
 
-.add-new-form {
-  padding: 5%;
-  font-size: 1.5rem;
-}
-
-.add-new-form div {
-  padding-left: 0px;
-}
-
-.add-new-form * {
-  padding: 2%;
-}
-
 /* sign up/in forms */
 
 .registration {
   font-family: monospace;
   font-size: 2rem;
-  padding: 5rem;
-  padding-top: 3rem;
 }
 
 .registration button {
@@ -189,6 +153,21 @@ img {
   cursor: pointer;
 }
 
+.registration__button__new {
+  background-color: #3498db;
+  border: none;
+  color: white;
+  padding: 20px 34px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  width: 194px;
+
+  cursor: pointer;
+}
+
 .registration__button__group {
   display: flex;
   justify-content: center;
@@ -196,51 +175,8 @@ img {
 
 /* primary navigation
 --------------------------------------------------------------------- */
-/* nav-wrap */
-#nav-wrap {
-  font: 12px "opensans-bold", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  background-color: #0f0f0f;
-}
 
-/* hide toggle button */
-#nav-wrap > a.mobile-btn {
-  display: none;
-}
-
-ul#nav li {
-  list-style: none;
-  height: 48px;
-  display: inline-block;
-}
-
-/* Links */
-ul#nav li a {
-  /* 8px padding top + 8px padding bottom + 32px line-height = 48px */
-
-  display: inline-block;
-  padding: 8px 13px;
-  text-decoration: none;
-  color: #fff;
-
-  -webkit-transition: color 0.2s ease-in-out;
-  -moz-transition: color 0.2s ease-in-out;
-  -o-transition: color 0.2s ease-in-out;
-  -ms-transition: color 0.2s ease-in-out;
-  transition: color 0.2s ease-in-out;
-}
-
-ul#nav li.current a {
-  color: rgb(0, 114, 47);
-}
-
-.header-logo {
-  font-size: 25px;
-}
 .header-logo sup {
   color: rgb(0, 114, 47);
+  font-weight: bolder;
 }
