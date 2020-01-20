@@ -1,27 +1,14 @@
 import React, { Component } from "react";
-import PurchaseContext from "../contexts/PurchaseContext";
-import PurchaseApiService from "../services/purchase-api-service";
 
-export default class AddPurchaseForm extends Component {
-  static contextType = PurchaseContext;
+export default class AddPurchaseDemoForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
-    const { username } = this.context;
-    const { cost, item } = e.target;
-
-    PurchaseApiService.postPurchase(username, cost.value, item.value)
-      .then(this.context.addPurchase)
-      .then(() => {
-        (cost.value = ""), (item.value = "").catch(this.context.setError);
-      });
   }
 
   render() {
     return (
       <div className="addpurchase">
-        <h2>Add Purchase</h2>
         <form
           className="addpurchase__form"
           onSubmit={e => this.handleSubmit(e)}
@@ -32,8 +19,6 @@ export default class AddPurchaseForm extends Component {
             name="item"
             id="item"
             placeholder="Papertowels, Seltzer, Shareables..."
-            value={this.state.name}
-            onChange={e => this.titleChanged(e.target.value)}
           />
           <label htmlFor="cost">Cost:</label>
           <input
@@ -41,8 +26,6 @@ export default class AddPurchaseForm extends Component {
             name="cost"
             id="cost"
             placeholder="$"
-            value={this.state.cost}
-            onChange={e => this.urlChanged(e.target.value)}
           />
 
           <div className="addpurchase__button">
@@ -51,5 +34,5 @@ export default class AddPurchaseForm extends Component {
         </form>
       </div>
     );
-  }
+};
 }

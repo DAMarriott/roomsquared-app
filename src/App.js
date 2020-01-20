@@ -6,6 +6,7 @@ import SigninPage from "./routes/SigninPage";
 import SignupPage from "./routes/SignupPage";
 import PurchasesPage from "./routes/PurchasesPage";
 import NotFoundPage from "./routes/NotFoundPage";
+import DemoPage from "./routes/DemoPage";
 import "./App.css";
 import "./layout.scss";
 
@@ -39,6 +40,7 @@ class App extends Component {
             <Route path="/signin" component={SigninPage} />
             <Route path="/signup" component={SignupPage} />
             <Route path="/home" component={PurchasesPage} />
+            <Route path="/demo" component={DemoPage} />
             <Route component={NotFoundPage} />
           </Switch>
         </main>
