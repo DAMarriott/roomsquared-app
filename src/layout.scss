@@ -81,11 +81,26 @@ main .aboutSection h1 {
   text-align: center;
 }
 
+.aboutSection h3 {
+  margin-bottom: 0;
+}
+
+.aboutSection .aboutBlurb {
+  margin-bottom: 0;
+}
+
+.aboutSection p {
+  margin-top: 0;
+  margin-bottom: 3rem;
+}
+
 main .aboutSection * {
   padding: 1rem;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   font-family: inherit;
   font-size: 100%;
   max-width: 250px;
@@ -115,10 +130,47 @@ input, select, textarea {
 
 /* group page view */
 
+.group-section h2 {
+  margin-top: 0;
+}
+
+.group-section {
+  margin-bottom: 5rem;
+}
+
+.group-counter {
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+
+.you-counter {
+  color: green;
+}
+
+.user-counter {
+  color: rgb(197, 6, 6);
+}
+
+.SignupPage {
+  padding: 0%;
+}
+
 .purchase-box {
   height: 25rem;
   border: solid white;
   margin: 0;
+}
+
+.purchase-box ul {
+  text-decoration: none;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  padding-left: 0;
+}
+
+.purchase-cost {
+  color: green;
 }
 
 /* about page images*/
