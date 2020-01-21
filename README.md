@@ -18,9 +18,13 @@ https://github.com/DAMarriott/roomsquared-api
 - Group creation/registration
 - Reporting and analytics
 - Email notification system
+- 'join group' shareable link
 - 'Square up' calculator
 - Admin priveledges
-- Item Deletion
+- Purchase deletion
+- Filter purchase lists
+- Date of purchase
+- Media Queries
 
 ## Link to Project
 
