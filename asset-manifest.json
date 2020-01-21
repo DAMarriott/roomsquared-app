@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/roomsquared-app/static/css/main.ccbb44d2.chunk.css",
+    "main.js": "/roomsquared-app/static/js/main.45d567b7.chunk.js",
+    "main.js.map": "/roomsquared-app/static/js/main.45d567b7.chunk.js.map",
+    "runtime-main.js": "/roomsquared-app/static/js/runtime-main.2543fcd4.js",
+    "runtime-main.js.map": "/roomsquared-app/static/js/runtime-main.2543fcd4.js.map",
+    "static/js/2.6b445b4b.chunk.js": "/roomsquared-app/static/js/2.6b445b4b.chunk.js",
+    "static/js/2.6b445b4b.chunk.js.map": "/roomsquared-app/static/js/2.6b445b4b.chunk.js.map",
+    "index.html": "/roomsquared-app/index.html",
+    "precache-manifest.685dc170786c6f815fbd1a7e7f5c6951.js": "/roomsquared-app/precache-manifest.685dc170786c6f815fbd1a7e7f5c6951.js",
+    "service-worker.js": "/roomsquared-app/service-worker.js",
+    "static/css/main.ccbb44d2.chunk.css.map": "/roomsquared-app/static/css/main.ccbb44d2.chunk.css.map",
+    "static/js/2.6b445b4b.chunk.js.LICENSE": "/roomsquared-app/static/js/2.6b445b4b.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2543fcd4.js",
+    "static/js/2.6b445b4b.chunk.js",
+    "static/css/main.ccbb44d2.chunk.css",
+    "static/js/main.45d567b7.chunk.js"
+  ]
+}
