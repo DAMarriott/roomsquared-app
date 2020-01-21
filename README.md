@@ -28,7 +28,7 @@ https://github.com/DAMarriott/roomsquared-api
 
 ## Link to Project
 
-https://damarriott.github.io/roomsquared-app
+https://roomsquared-app.dmarriott.now.sh/
 
 ## Author
 
