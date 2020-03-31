@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SignupForm from "../components/SignupForm";
+import { GroupFormProvider } from "../contexts/GroupFormContext";
 
 export default class SignupPage extends Component {
   static defaultProps = {
@@ -15,9 +16,11 @@ export default class SignupPage extends Component {
 
   render() {
     return (
-      <section className="SignupPage">
-        <SignupForm onRegistrationSuccess={this.handleSignupSuccess} />
-      </section>
+      <GroupFormProvider>
+        <section className="SignupPage">
+          <SignupForm onRegistrationSuccess={this.handleSignupSuccess} />
+        </section>
+      </GroupFormProvider>
     );
   }
 }

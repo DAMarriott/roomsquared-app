@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AuthApiService from "../services/auth";
+import GroupForm from "./GroupForm.js";
 
 class SignupForm extends React.Component {
   static defaultProps = {
@@ -21,7 +22,7 @@ class SignupForm extends React.Component {
       .then(user => {
         username.value = " ";
         password.value = " ";
-        groupId.calue = " ";
+        groupId.value = " ";
         this.props.onRegistrationSuccess();
       })
       .catch(res => {
@@ -55,15 +56,7 @@ class SignupForm extends React.Component {
             id="password"
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="groupId">Group ID</label>
-          <input
-            type="groupId"
-            className="registration__control"
-            name="groupId"
-            id="groupId"
-          />
-        </div>
+        <GroupForm />
 
         <div className="registration__button__group">
           <button type="reset" className="registration__button">

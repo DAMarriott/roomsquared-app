@@ -21,8 +21,16 @@ export default class DemoPage extends Component {
     const { total } = this.state;
     return (
       <div className="main-home">
+        <div class="ticker-wrap">
+          <div class="ticker">
+            <div class="ticker__item">You: ${total}</div>
+            <div class="ticker__item">User 2: $75</div>
+            <div class="ticker__item">User 3: $120</div>
+          </div>
+        </div>
         <section className="group-section">
           <div className="group-counter">
+            <p className="counter-title">House Counter</p>
             <div className="you-counter">You: ${total}</div>
             <div className="user-counter">User 2: $75</div>
             <div className="user-counter">User 3: $120</div>

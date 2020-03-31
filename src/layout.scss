@@ -159,6 +159,8 @@ textarea {
   height: 25rem;
   border: solid white;
   margin: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .purchase-box ul {
@@ -236,10 +238,99 @@ img {
   justify-content: center;
 }
 
+.addpurchase__form {
+  margin-top: 20px;
+  padding: 5px;
+}
+
+.addpurchase__form * {
+  margin-top: 10px;
+  padding: 5px;
+}
+
+#item {
+  margin-right: 10px;
+}
+
 /* primary navigation
 --------------------------------------------------------------------- */
 
 .header-logo sup {
   color: rgb(0, 114, 47);
   font-weight: bolder;
+}
+
+@media screen and (min-width: 1024px) {
+  img {
+    width: 350px;
+  }
+
+  .purchase-box {
+    width: 820px;
+  }
+}
+
+$duration: 30s;
+
+@-webkit-keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.ticker-wrap {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  height: 4rem;
+  background-color: rgba(#000, 0.9);
+  padding-left: 100%;
+  box-sizing: content-box;
+
+  .ticker {
+    display: inline-block;
+    height: 4rem;
+    line-height: 4rem;
+    white-space: nowrap;
+    padding-right: 100%;
+    box-sizing: content-box;
+
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-name: ticker;
+    animation-name: ticker;
+    -webkit-animation-duration: $duration;
+    animation-duration: $duration;
+
+    &__item {
+      display: inline-block;
+
+      padding: 0 2rem;
+      font-size: 2rem;
+      color: white;
+    }
+  }
 }
