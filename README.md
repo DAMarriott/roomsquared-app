@@ -9,19 +9,26 @@ Roomsquared is an app that allows you and your housemates to track shared expens
 - Javascript
 - React
 
+## Backend 
+https://github.com/DAMarriott/roomsquared-api
+
 ## Features to be Added
 
 - Connect to backend API and database
 - Group creation/registration
 - Reporting and analytics
 - Email notification system
+- 'join group' shareable link
 - 'Square up' calculator
 - Admin priveledges
-- Item Deletion
+- Purchase deletion
+- Filter purchase lists
+- Date of purchase
+- Media Queries
 
 ## Link to Project
 
-https://damarriott.github.io/dic/
+https://roomsquared-app.dmarriott.now.sh/
 
 ## Author
 
