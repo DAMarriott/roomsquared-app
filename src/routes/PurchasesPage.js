@@ -3,6 +3,7 @@ import PurchaseContext from "../contexts/PurchaseContext";
 import PurchaseApiService from "../services/purchase-api-service";
 import PurchaseListItem from "../components/PurchaseListItem";
 import { getAuthToken } from "../services/token-service";
+import AddPurchaseForm from "../components/AddPurchaseForm";
 
 export default class PurchasesPage extends Component {
   static contextType = PurchaseContext;
@@ -18,7 +19,7 @@ export default class PurchasesPage extends Component {
 
   renderPurchases() {
     const { purchaseList = [] } = this.context;
-    return purchaseList.map(purchase => (
+    return purchaseList.map((purchase) => (
       <PurchaseListItem key={purchase.id} purchase={purchase} />
     ));
   }
@@ -30,6 +31,7 @@ export default class PurchasesPage extends Component {
           <h2>You</h2>
           <div className="purchase-box">Your purchases</div>
           {this.renderPurchases()}
+          <AddPurchaseForm />
         </section>
         <section className="group-section">
           <h2>User 2</h2>

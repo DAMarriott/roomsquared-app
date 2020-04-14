@@ -1,17 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 
 const randomInt = Math.floor(100000 + Math.random() * 900000);
 
 export default class GroupIdInput extends React.Component {
-  handleInputChange = function(e) {
+  handleInputChange = function (e) {
     const { onIdChange = () => {} } = this.props;
     const groupIdInt = parseInt(e.target.value);
     onIdChange(groupIdInt);
   };
 
-  handleGroupGen = function() {
+  handleGroupGen = function () {
     const { onIdChange = () => {} } = this.props;
-    onIdChange(Math.floor(100000 + Math.random() * 900000));
+    onIdChange(randomInt);
   };
 
   render() {
@@ -19,7 +19,7 @@ export default class GroupIdInput extends React.Component {
 
     const renderGroupId = () => {
       if (groupStatus) {
-        return <input onChange={e => this.handleInputChange(e)}></input>;
+        return <input onChange={(e) => this.handleInputChange(e)}></input>;
       } else {
         this.handleGroupGen();
         return (

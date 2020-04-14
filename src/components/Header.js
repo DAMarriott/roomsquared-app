@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import ToggleSignout from "./ToggleSignout";
 
 class Header extends Component {
   render() {
@@ -9,20 +10,7 @@ class Header extends Component {
           Room<sup>2</sup>
         </h1>
 
-        <nav id="nav" className="nav">
-          <Link className="smoothscroll" to="/">
-            About
-          </Link>
-          <Link className="smoothscroll" to="/home">
-            Home
-          </Link>
-          <Link className="smoothscroll" to="/signin">
-            Sign In
-          </Link>
-          <Link className="smoothscroll" to="/signup">
-            Sign Up
-          </Link>
-        </nav>
+        <ToggleSignout />
       </header>
     );
   }

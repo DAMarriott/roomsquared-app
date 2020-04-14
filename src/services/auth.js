@@ -9,14 +9,14 @@ const AuthApiService = {
     return fetch(`${config.API_ENDPOINT}/auth/signin`, {
       method: "POST",
       headers: {
-        "content-type": "application/json"
+        "content-type": "application/json",
       },
-      body: JSON.stringify({ username, password })
+      body: JSON.stringify({ username, password }),
     })
-      .then(res =>
-        !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+      .then((res) =>
+        !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
       )
-      .then(res => {
+      .then((res) => {
         saveAuthToken(res["authToken"]);
         return res;
       });
@@ -25,13 +25,22 @@ const AuthApiService = {
     return fetch(`${config.API_ENDPOINT}/users`, {
       method: "POST",
       headers: {
-        "content-type": "application/json"
+        "content-type": "application/json",
       },
-      body: JSON.stringify(user)
-    }).then(res =>
-      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+      body: JSON.stringify(user),
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
     );
-  }
+  },
+
+  signout() {
+    return fetch(`${config.API_ENDPOINT}/signout`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+  },
 };
 
 export default AuthApiService;
