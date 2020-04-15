@@ -11,7 +11,7 @@ import "./App.css";
 import "./layout.scss";
 
 class App extends Component {
-  state = { hasError: false, sticky: false };
+  state = { hasError: false, sticky: false, username: "", groupId: null };
 
   componentDidMount() {
     window.addEventListener("scroll", () => {
@@ -29,6 +29,11 @@ class App extends Component {
     return { hasError: true };
   }
 
+  updateLoginState(username, groupId) {
+    this.setState({ username: { username }, groupId: { groupId } });
+    console.log(username);
+  }
+
   render() {
     const { sticky } = this.state;
     return (
@@ -37,7 +42,17 @@ class App extends Component {
         <main className="App__main">
           <Switch>
             <Route exact path="/" component={AboutPage} />
-            <Route path="/signin" component={SigninPage} />
+            <Route
+              path="/signin"
+              render={(props) => (
+                <SigninPage
+                  {...props}
+                  updateLoginState={(e) => {
+                    this.updateLoginState(e);
+                  }}
+                />
+              )}
+            />
             <Route path="/signup" component={SignupPage} />
             <Route path="/home" component={PurchasesPage} />
             <Route path="/demo" component={DemoPage} />

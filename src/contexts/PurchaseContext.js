@@ -7,17 +7,17 @@ const PurchaseContext = React.createContext({
   clearError: () => {},
   setPurchase: () => {},
   clearPurchase: () => {},
-  addPurchase: () => {}
+  addPurchase: () => {},
 });
 
 export default PurchaseContext;
 
 export class PurchaseProvider extends Component {
   state = {
-    error: null
+    error: null,
   };
 
-  setError = error => {
+  setError = (error) => {
     console.error(error);
     this.setState({ error });
   };
@@ -26,7 +26,7 @@ export class PurchaseProvider extends Component {
     this.setState({ error: null });
   };
 
-  setPurchase = purchase => {
+  setPurchase = (purchase) => {
     this.setState({ purchase });
   };
 
@@ -34,7 +34,7 @@ export class PurchaseProvider extends Component {
     this.setPurchase([]);
   };
 
-  addPurchase = purchase => {
+  addPurchase = (purchase) => {
     this.setPurchase([...this.state.purchase, purchase]);
   };
 
@@ -45,7 +45,7 @@ export class PurchaseProvider extends Component {
       setError: this.setError,
       clearError: this.clearError,
       setPurchase: this.setPurchase,
-      addPurchase: this.addPurchase
+      addPurchase: this.addPurchase,
     };
     return (
       <PurchaseContext.Provider value={value}>

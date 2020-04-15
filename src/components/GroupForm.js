@@ -8,13 +8,13 @@ export default class GroupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      groupStatus: true
+      groupStatus: true,
     };
   }
 
-  handleOptionChange = function(changeEvent) {
+  handleOptionChange = function (changeEvent) {
     this.setState({
-      groupStatus: changeEvent.target.value === "true"
+      groupStatus: changeEvent.target.value === "true",
     });
   };
 
@@ -31,7 +31,7 @@ export default class GroupForm extends React.Component {
               name="groupId"
               value="true"
               checked={groupStatus}
-              onChange={e => this.handleOptionChange(e)}
+              onChange={(e) => this.handleOptionChange(e)}
             ></input>
             <input
               type="radio"
@@ -39,12 +39,12 @@ export default class GroupForm extends React.Component {
               name="groupId"
               value="false"
               checked={!groupStatus}
-              onChange={e => this.handleOptionChange(e)}
+              onChange={(e) => this.handleOptionChange(e)}
             ></input>
 
             <GroupIdInput
               groupId={groupId}
-              onIdChange={id => setGroupId(id)}
+              onIdChange={(id) => setGroupId(id)}
               groupStatus={this.state.groupStatus}
             />
           </div>

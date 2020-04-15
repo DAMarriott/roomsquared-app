@@ -4,12 +4,12 @@ import GroupForm from "./GroupForm.js";
 
 class SignupForm extends React.Component {
   static defaultProps = {
-    onRegistrationSuccess: () => {}
+    onRegistrationSuccess: () => {},
   };
 
   state = { error: null };
 
-  handleSubmit = ev => {
+  handleSubmit = (ev) => {
     ev.preventDefault();
     const { username, password, groupId } = ev.target;
 
@@ -17,15 +17,15 @@ class SignupForm extends React.Component {
     AuthApiService.postUser({
       username: username.value,
       password: password.value,
-      groupId: groupId.value
+      groupId: groupId.value,
     })
-      .then(user => {
+      .then((user) => {
         username.value = " ";
         password.value = " ";
         groupId.value = " ";
         this.props.onRegistrationSuccess();
       })
-      .catch(res => {
+      .catch((res) => {
         this.setState({ error: res.error });
       });
   };
@@ -34,7 +34,7 @@ class SignupForm extends React.Component {
     const { error } = this.state;
 
     return (
-      <form className="registration" onSubmit={this.handleSubmit}>
+      <form className="registration" onSubmit={(e) => this.handleSubmit(e)}>
         <h2>Register</h2>
         <div role="alert">{error && <p className="red">{error}</p>}</div>
         <div className="registration__hint"></div>

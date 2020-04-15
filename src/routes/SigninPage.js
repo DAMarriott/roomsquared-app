@@ -5,8 +5,8 @@ export default class SigninPage extends Component {
   static defaultProps = {
     location: {},
     history: {
-      push: () => {}
-    }
+      push: () => {},
+    },
   };
 
   handleSigninSuccess = () => {
@@ -17,7 +17,10 @@ export default class SigninPage extends Component {
     return (
       <section className="SigninPage">
         <p>Welcome back.</p>
-        <SigninForm onSigninSuccess={this.handleSigninSuccess} />
+        <SigninForm
+          updateLoginState={this.props.updateLoginState}
+          onSigninSuccess={this.handleSigninSuccess}
+        />
       </section>
     );
   }

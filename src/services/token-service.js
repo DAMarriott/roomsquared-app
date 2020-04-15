@@ -1,9 +1,7 @@
 const config = require("./config");
 
-console.log("config", config);
-
 module.exports = {
-  saveAuthToken: token => {
+  saveAuthToken: (token) => {
     console.log(config, token);
     window.localStorage.setItem(config.TOKEN_KEY, token);
   },
@@ -18,5 +16,5 @@ module.exports = {
   },
   makeBasicAuthToken: (username, password) => {
     return window.btoa(`${username}:${password}`);
-  }
+  },
 };

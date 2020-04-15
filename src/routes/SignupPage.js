@@ -4,14 +4,14 @@ import { GroupFormProvider } from "../contexts/GroupFormContext";
 
 export default class SignupPage extends Component {
   static defaultProps = {
+    location: {},
     history: {
-      push: () => {}
-    }
+      push: () => {},
+    },
   };
 
-  handleSignupSuccess = user => {
-    const { history } = this.props;
-    history.push("/signin");
+  handleSignupSuccess = () => {
+    this.props.history.push("/signin");
   };
 
   render() {

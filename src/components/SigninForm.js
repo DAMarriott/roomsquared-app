@@ -3,27 +3,26 @@ import AuthApiService from "../services/auth";
 
 export default class SigninForm extends React.Component {
   static defaultProps = {
-    onSigninSuccess: () => {}
+    onSigninSuccess: () => {},
   };
 
   state = { error: null };
 
-  handleSubmitBasicAuth = ev => {
+  handleSubmitBasicAuth = (ev) => {
     ev.preventDefault();
     const { username, password } = ev.target;
-
+    this.props.updateLoginState(username.value);
     this.setState({ error: null });
     AuthApiService.postLogin({
       username: username.value,
-      password: password.value
+      password: password.value,
     })
-      .then(user => {
+      .then((user) => {
         username.value = " ";
         password.value = " ";
         this.props.onSigninSuccess();
-        console.log(user);
       })
-      .catch(res => {
+      .catch((res) => {
         this.setState({ error: res.error });
       });
   };
@@ -34,7 +33,7 @@ export default class SigninForm extends React.Component {
     return (
       <form
         className="registration"
-        onSubmit={e => this.handleSubmitBasicAuth(e)}
+        onSubmit={(e) => this.handleSubmitBasicAuth(e)}
       >
         <h2>Sign In</h2>
         <div role="alert">{error && <p className="red">{error}</p>}</div>

@@ -3,20 +3,19 @@ import { render } from "@testing-library/react";
 
 const GroupFormContext = React.createContext({
   groupId: null,
-  setGroupId: () => {}
+  setGroupId: () => {},
 });
 
 export default GroupFormContext;
 
 export class GroupFormProvider extends Component {
-  setGroupId = groupId => {
+  setGroupId = (groupId) => {
     this.setState({ groupId });
-    console.log(groupId);
   };
 
   state = {
     groupId: this.groupId,
-    setGroupId: this.setGroupId
+    setGroupId: this.setGroupId,
   };
 
   render() {

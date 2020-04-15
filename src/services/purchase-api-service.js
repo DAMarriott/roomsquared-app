@@ -2,16 +2,19 @@ import config from "./config";
 import { getAuthToken } from "./token-service";
 
 const PurchaseApiService = {
-  getPurchases(username, groupId) {
+  getPurchases() {
     return fetch(`${config.API_ENDPOINT}/purchases/`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${getAuthToken()}`,
+        authorization: `Bearer ${getAuthToken()}`,
       },
-      body: JSON.stringify({ username, groupId }),
-    }).then((res) =>
-      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
-    );
+    })
+      .then((res) =>
+        !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+      )
+      .then((res) => {
+        console.log(res);
+      });
   },
 
   postPurchase({ item, price }) {
